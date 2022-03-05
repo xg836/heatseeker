@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { Collection, Card, Heading, Text, View } from '@aws-amplify/ui-react'
+import '@aws-amplify/ui-react/styles.css'
 
 function App() {
+
+  const snacks = [
+    {
+      title: "Valentina's",
+      description: "A well rounded mexican hot sauce",
+      heatRating: 4
+    },
+    {
+      title: "Del Scorcho",
+      description: "A tomatoey taco sauce",
+      heatRating: 2
+    },
+    {
+      title: "Roberto's Red Sauce",
+      description: "A smoky, thin hot sauce",
+      heatRating: 5
+    }
+  ]
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <View>
+    <Collection type="list" items={snacks} gap="1.5rem">
+    {(item, index) => (
+      <Card key={index} padding="1rem">
+        <Heading level={4}>{item.title}</Heading>
+        <Text>{item.description}</Text>
+      </Card>
+    )}
+  </Collection>
+  </View>
+  )
 }
 
-export default App;
+export default App
